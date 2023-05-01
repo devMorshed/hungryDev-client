@@ -1,13 +1,16 @@
-import React from 'react';
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from '../Home';
+import React from "react";
+import Nav from "../components/Nav";
+import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer";
 
+const Layout = () => {
+	return (
+		<div>
+			<Nav />
+			<Outlet />
+			<Footer />
+		</div>
+	);
+};
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home/>
-  }
-])
-
-export default router;
+export default Layout;

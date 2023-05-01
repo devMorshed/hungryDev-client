@@ -1,8 +1,11 @@
+import { Outlet } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+
 const Home = () => {
   return (
-		<div className="h-96 w-full">
-		
-		</div>
+		"home"
   );
 };
 
