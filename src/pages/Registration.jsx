@@ -1,17 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../Provider/AuthProvider";
 
 const Registration = () => {
-
-  const { handleNewUser } = useContext(authContext);
+	const { handleNewUser } = useContext(authContext);
+	const [errMsg, setErrMsg] = useState("");
 
 	const handleSignUp = (event) => {
 		event.preventDefault();
 		console.log(event);
 		const email = event.target.email.value;
 		const password = event.target.password.value;
-		handleNewUser(email, password);
+
+		if (password.length < 6) {
+			setErrMsg("Password must be at least 6 character long !!! ");
+    } else {
+      setErrMsg('')
+			handleNewUser(email, password);
+		}
 	};
 	return (
 		<div className="flex flex-col items-center justify-center h-[800px] bg-gray-100">
@@ -75,6 +81,12 @@ const Registration = () => {
 							required
 						/>
 					</div>
+
+					{errMsg && (
+						<div className="my-4 text-center text-warning rounded-md">
+							{errMsg}
+						</div>
+					)}
 
 					<div className="mt-4">
 						<button
