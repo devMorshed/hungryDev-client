@@ -4,7 +4,7 @@ import { Tooltip } from "react-tooltip";
 import NavBtn from "./NavBtn";
 
 const Nav = () => {
-	const user = "Morshed";
+	const user = ''
 
 	return (
 		<div className="sticky top-0 right-0 left-0 my-4  ">
@@ -19,7 +19,7 @@ const Nav = () => {
 						<NavBtn to={"/profile"}>
 							<img
 								data-tooltip-id="my-tooltip"
-								data-tooltip-content={user && user}
+								data-tooltip-content={user ? user : ''}
 								className="border-2 h-10 w-10 p-3 rounded-full"
 								src=""
 								alt="User"
