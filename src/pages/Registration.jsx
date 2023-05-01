@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { authContext } from "../Provider/AuthProvider";
 
 const Registration = () => {
+
+  const { handleNewUser } = useContext(authContext);
+
 	const handleSignUp = (event) => {
 		event.preventDefault();
 		console.log(event);
+		const email = event.target.email.value;
+		const password = event.target.password.value;
+		handleNewUser(email, password);
 	};
 	return (
 		<div className="flex flex-col items-center justify-center h-[800px] bg-gray-100">

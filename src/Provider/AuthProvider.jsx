@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
 			});
 	};
 
-	const handleEmail = (email, password) => {
+	const handleNewUser = (email, password) => {
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				// Signed in
@@ -128,7 +128,7 @@ const AuthProvider = ({ children }) => {
 		loading,
 		user,
 		handleGoogle,
-		handleEmail,
+		handleNewUser,
 		handleSignIn,
 		handleGit,
 	};
