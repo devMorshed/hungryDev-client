@@ -4,16 +4,16 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { authContext } from "../Provider/AuthProvider";
 
-
-
 function LoginForm() {
 	const handleLogIn = (event) => {
 		event.preventDefault();
-		console.log(event);
-  };
-  
-  const { handleGit, handleGoogle } = useContext(authContext);
+    console.log(event);
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    handleSignIn(email, password)
+	};
 
+	const { handleGit, handleGoogle, handleSignIn } = useContext(authContext);
 
 	return (
 		<div className="flex flex-col items-center justify-center h-[800px] bg-gray-100">

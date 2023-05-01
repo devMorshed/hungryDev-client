@@ -80,7 +80,6 @@ const AuthProvider = ({ children }) => {
 				const user = userCredential.user;
 				console.log(user);
 
-				// ...
 			})
 			.catch((error) => {
 				const errorCode = error.code;
@@ -97,8 +96,8 @@ const AuthProvider = ({ children }) => {
 				// Signed in
 				const user = userCredential.user;
 				console.log(user);
-				setUser(user);
-				// ...
+				
+				
 			})
 			.catch((error) => {
 				const errorCode = error.code;
