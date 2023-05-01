@@ -1,45 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
-import { app } from "../firebase/firebase.config";
+import { authContext } from "../Provider/AuthProvider";
 
-const provider = new GithubAuthProvider();
+
+
 function LoginForm() {
 	const handleLogIn = (event) => {
 		event.preventDefault();
 		console.log(event);
   };
   
-  const auth = getAuth(app);
-  const gitProvide = new GithubAuthProvider();
-
-  const handleGit = () => {
-    signInWithPopup(auth, provider)
-		.then((result) => {
-			// This gives you a GitHub Access Token. You can use it to access the GitHub API.
-			const credential = GithubAuthProvider.credentialFromResult(result);
-			const token = credential.accessToken;
-
-			// The signed-in user info.
-			const user = result.user;
-			// IdP data available using getAdditionalUserInfo(result)
-			// ...
-      console.log(user);
-		})
-		.catch((error) => {
-			// Handle Errors here.
-			const errorCode = error.code;
-			const errorMessage = error.message;
-			// The email of the user's account used.
-			const email = error.customData.email;
-			// The AuthCredential type that was used.
-			const credential = GithubAuthProvider.credentialFromError(error);
-			// ...
-      console.log(error);
-		});
-  }
+  const { handleGit, handleGoogle } = useContext(authContext);
 
 
 	return (
@@ -85,7 +58,9 @@ function LoginForm() {
 						</button>
 					</div>
 					<div className="flex">
-						<button className="my-6 mx-auto block btn btn-outline rounded">
+						<button
+							onClick={handleGoogle}
+							className="my-6 mx-auto block btn btn-outline rounded">
 							<p className="flex gap-3 items-center">
 								Log In using <FcGoogle size={30} />
 							</p>

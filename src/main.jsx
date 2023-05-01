@@ -8,6 +8,7 @@ import Home from "./Home";
 import Blogs from "./pages/Blogs";
 import LoginForm from "./pages/LoginForm";
 import Registration from "./pages/Registration";
+import AuthProvider from "./Provider/AuthProvider";
 
 const router = createBrowserRouter([
 	{
@@ -28,13 +29,14 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/blogs",
-				element: <Blogs/>,
+				element: <Blogs />,
 			},
 		],
 	},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	
-  <RouterProvider router={router}></RouterProvider>
+	<AuthProvider>
+		<RouterProvider router={router}></RouterProvider>
+	</AuthProvider>
 );
