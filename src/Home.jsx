@@ -10,7 +10,7 @@ const Home = () => {
 	const chefs = useLoaderData();
 
 	return (
-		<div>
+		<div className="">
 			<section className="my-4 py-4 px-10 rounded-xl">
 				<div className="container max-h-[calc(100vh-200px)] mx-auto  gap-10 flex flex-col md:flex-row justify-center items-center ">
 					<div className="md:w-1/2">

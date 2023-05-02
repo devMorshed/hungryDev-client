@@ -9,6 +9,7 @@ import Blogs from "./pages/Blogs";
 import LoginForm from "./pages/LoginForm";
 import Registration from "./pages/Registration";
 import AuthProvider from "./Provider/AuthProvider";
+import PrivateRoute from "./Private/PrivateRoute";
 
 const router = createBrowserRouter([
 	{
@@ -18,10 +19,16 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <Home />,
-				loader: () => fetch("http://localhost:5000/chefs"),
-				// loader: () =>
-				// 	fetch("https://hungrydev-devmorshed.vercel.app/chefs"),
-			},
+				// loader: () => fetch("http://localhost:5000/chefs"),
+				loader: () =>
+          fetch("https://hungrydev-devmorshed.vercel.app/chefs"),
+        
+      },
+      {
+        path: '/chefs/:id',
+        element: <PrivateRoute><div>Hi</div></PrivateRoute>,
+        
+      },
 			{
 				path: "/login",
 				element: <LoginForm />,

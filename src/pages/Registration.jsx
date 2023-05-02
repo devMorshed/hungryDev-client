@@ -34,7 +34,7 @@ const Registration = () => {
 	// }, []);
 
 	return (
-		<div className="flex flex-col items-center justify-center h-[800px] bg-gray-100">
+		<div className="flex p-10 flex-col items-center justify-center h-[800px] bg-gray-100">
 			<div className="w-full max-w-md">
 				<form
 					onSubmit={handleSignUp}
@@ -104,7 +104,7 @@ const Registration = () => {
 
 					<div className="mt-4">
 						<button
-							className="bg-orange-400 btn btn-wide  hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mx-auto  block "
+							className="bg-orange-400 btn  hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mx-auto  block "
 							type="submit">
 							Sign Up
 						</button>

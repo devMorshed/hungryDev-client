@@ -16,7 +16,7 @@ function LoginForm() {
 	const { handleGit, handleGoogle, handleSignIn } = useContext(authContext);
 
 	return (
-		<div className="flex flex-col items-center justify-center h-[800px] bg-gray-100">
+		<div className="flex p-10 flex-col items-center justify-center bg-gray-100">
 			<div className="w-full max-w-md">
 				<form
 					onSubmit={handleLogIn}
@@ -57,17 +57,17 @@ function LoginForm() {
 							Log in
 						</button>
 					</div>
-					<div className="flex">
+					<div className="flex flex-col md:flex-row my-4 gap-4 ">
 						<button
 							onClick={handleGoogle}
-							className="my-6 mx-auto block btn btn-outline rounded">
+							className="mx-auto block btn btn-outline rounded">
 							<p className="flex gap-3 items-center">
 								Log In using <FcGoogle size={30} />
 							</p>
 						</button>
 						<button
 							onClick={handleGit}
-							className="my-6 mx-auto block btn btn-outline rounded">
+							className=" mx-auto block btn btn-outline rounded">
 							<p className="flex gap-3 items-center">
 								Log In using <FaGithub size={30} />
 							</p>
