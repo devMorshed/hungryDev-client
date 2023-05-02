@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../Provider/AuthProvider";
 
 const Registration = () => {
-	const { handleNewUser } = useContext(authContext);
+	const { handleNewUser, handleUpdate } = useContext(authContext);
 	const [errMsg, setErrMsg] = useState("");
 
 	const handleSignUp = (event) => {
@@ -11,14 +11,28 @@ const Registration = () => {
 		console.log(event);
 		const email = event.target.email.value;
 		const password = event.target.password.value;
+		const name = event.target.name.value;
+		const photo = event.target.photo.value;
 
 		if (password.length < 6) {
 			setErrMsg("Password must be at least 6 character long !!! ");
-    } else {
-      setErrMsg('')
+		} else {
+			setErrMsg("");
 			handleNewUser(email, password);
+
+			const delay = setTimeout(() => {
+				handleUpdate(name, photo);
+			}, 5000);
 		}
 	};
+
+	// useEffect(() => {
+	// 	const interval = setInterval(() => {
+	// 		console.log("This will run every second!");
+	// 	}, 1000);
+	// 	return () => clearInterval(interval);
+	// }, []);
+
 	return (
 		<div className="flex flex-col items-center justify-center h-[800px] bg-gray-100">
 			<div className="w-full max-w-md">

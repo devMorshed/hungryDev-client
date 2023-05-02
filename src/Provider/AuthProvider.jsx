@@ -10,6 +10,7 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithPopup,
 	GithubAuthProvider,
+  updateProfile,
 } from "firebase/auth";
 
 const AuthProvider = ({ children }) => {
@@ -104,7 +105,24 @@ const AuthProvider = ({ children }) => {
 				const errorMessage = error.message;
 				console.log(errorMessage);
 			});
-	};
+  };
+  
+  const handleUpdate = (name, photo) => {
+		updateProfile(auth.currentUser, {
+      displayName: name,
+			photoURL: photo ,
+		})
+			.then(() => {
+				// Profile updated!
+				// ...
+        console.log("updated", name, photo);
+			})
+			.catch((error) => {
+				// An error occurred
+				// ...
+        console.log(error);
+			});
+  };
 
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
@@ -131,6 +149,7 @@ const AuthProvider = ({ children }) => {
 		handleNewUser,
 		handleSignIn,
 		handleGit,
+		handleUpdate,
 	};
 
 	return (
