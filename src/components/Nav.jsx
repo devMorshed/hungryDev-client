@@ -5,13 +5,14 @@ import NavBtn from "./NavBtn";
 import { authContext } from "../Provider/AuthProvider";
 
 const Nav = () => {
-	const { user } = useContext(authContext);
+  const { user } = useContext(authContext);
+  console.log(user);
 
 	return (
-		<div className="sticky top-0 right-0 left-0 my-4  ">
-			<div className="container flex justify-between items-center mx-auto">
+		<div className="sticky top-0 right-0 left-0 my-4 z-10 ">
+			<div className="container rounded-xl bg-orange-300 shadow-lg py-2 px-10  flex justify-between items-center mx-auto">
 				<Link to={"/"}>
-					<h2 className="text-4xl">Hungry Dev</h2>
+					<h2 className=" text-xl lg:text-4xl">Hungry Dev</h2>
 				</Link>
 				<div className="flex items-center gap-4">
 					<NavBtn to={"/"}> Home </NavBtn>
@@ -21,8 +22,8 @@ const Nav = () => {
 							<img
 								data-tooltip-id="my-tooltip"
 								data-tooltip-content={user?.displayName}
-								className="border-2 h-10 w-10 p-3 rounded-full"
-								src=""
+								className="border-2 h-12 w-12 rounded-full"
+								src={user.photoURL}
 								alt="User"
 							/>
 						</NavBtn>

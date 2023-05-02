@@ -4,9 +4,7 @@ import { NavLink } from "react-router-dom";
 const NavBtn = ({ to, children }) => {
 	return (
 		<NavLink
-			className={({ isActive, isPending }) =>
-				isPending ? "pending" : isActive ? "underline" : ""
-			}
+			className={({ isActive }) => (isActive ? "underline" : "") }
 			to={to}>
 			{children}
 		</NavLink>
