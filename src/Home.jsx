@@ -8,18 +8,20 @@ import Banner from "./components/Banner";
 
 const Home = () => {
 	const chefs = useLoaderData();
-
+	// https://i.ibb.co/pWTdFvT/doodlefooddark.jpg
 	return (
 		<div className="">
-			<section className="my-4 py-4 px-10 rounded-xl">
-				<div className="container max-h-[calc(100vh-200px)] mx-auto  gap-10 flex flex-col md:flex-row justify-center items-center ">
+			<section className="my-4 relative container mx-auto rounded-xl">
+				<div className=" p-10  max-h-[calc(100vh-200px)]   gap-10 flex flex-col md:flex-row justify-center items-center ">
+					<div
+						style={{
+							backgroundImage: `url(https://thumbs.dreamstime.com/b/web-152355073.jpg)`,
+						}}
+						className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
+
 					<div className="md:w-1/2">
 						<h3 className=" text-4xl md:text-6xl text-center ">
-							Welcome to the domain of{" "}
-							<span className="bg-slate-100 rounded-xl  font-serif">
-								{" "}
-								<br /> Hungry Dev
-							</span>
+							Welcome to the domain of <br /> Hungry Dev
 						</h3>
 					</div>
 					<div className="flex-grow">
@@ -44,12 +46,17 @@ const Home = () => {
 				<h3 className="text-3xl text-center mb-8 ">
 					Chef Qoutes of the Day{" "}
 				</h3>
-				<div className="container   mx-auto  gap-10 flex flex-col md:flex-row justify-center items-center ">
+				<div className="container mx-auto  gap-10 flex flex-col md:flex-row justify-center items-center ">
 					<Banner />
 				</div>
 			</section>
-			<section className="my-10 p-10 ">
-				<div className=" container mx-auto flex flex-col gap-10 md:flex-row justify-between items-center">
+			<section className=" relative rounded-xl container mx-auto my-10 lg:p-10 p-4 ">
+				<div
+					style={{
+						backgroundImage: `url(https://thumbs.dreamstime.com/b/web-152355073.jpg)`,
+					}}
+					className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
+				<div className=" flex flex-col gap-10 md:flex-row justify-between items-center">
 					<div className="md:w-1/2">
 						<img
 							className="rounded "
