@@ -10,7 +10,7 @@ const Nav = () => {
 
 	return (
 		<div className="sticky top-0 right-0 left-0 my-4 z-10 ">
-			<div className="container rounded-xl bg-orange-300 shadow-lg py-2 px-10  flex justify-between items-center mx-auto">
+			<div className="container rounded bg-orange-300 shadow-lg py-2 px-10  flex justify-between items-center mx-auto">
 				<Link to={"/"}>
 					<h2 className=" text-xl lg:text-4xl">Hungry Dev</h2>
 				</Link>
