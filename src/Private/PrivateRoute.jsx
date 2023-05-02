@@ -7,7 +7,9 @@ const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(authContext);
 
   if (loading) {
-    return <div>Loading</div>
+    return <div className='flex justify-center items-center'>
+      <button className="btn btn-ghost loading"></button>
+    </div>
   }
 
   if (user) {

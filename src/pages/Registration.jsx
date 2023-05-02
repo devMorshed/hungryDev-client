@@ -34,47 +34,47 @@ const Registration = () => {
 	// }, []);
 
 	return (
-		<div className="flex p-10 flex-col items-center justify-center h-[800px] bg-gray-100">
+		<div className="flex px-10 flex-col items-center flex-grow justify-center bg-gray-100">
 			<div className="w-full max-w-md">
 				<form
 					onSubmit={handleSignUp}
-					className="bg-white shadow-lg rounded-xl px-8 pt-6 pb-8 mb-4">
-					<div className="mb-4">
+					className="bg-white shadow-lg rounded-xl px-8 pt-6 pb-8 mb-4 space-y-5">
+					<div>
 						<label
-							className="block text-gray-700 font-bold mb-2"
+							className="block text-gray-700"
 							htmlFor="name">
 							Name
 						</label>
 						<input
-							className=" border rounded w-full py-2 px-3 text-gray-700"
+							className=" border rounded w-full px-3 text-gray-700"
 							id="name"
 							type="text"
 							placeholder="John Doe"
 							required
 						/>
 					</div>
-					<div className="mb-4">
+					<div>
 						<label
-							className="block text-gray-700 font-bold mb-2"
+							className="block text-gray-700"
 							htmlFor="photo">
 							Photo URL
 						</label>
 						<input
-							className=" border rounded w-full py-2 px-3 text-gray-700"
+							className=" border rounded w-full px-3 text-gray-700"
 							id="photo"
 							type="text"
 							placeholder="https://example.com"
 							required
 						/>
 					</div>
-					<div className="mb-4">
+					<div>
 						<label
-							className="block text-gray-700 font-bold mb-2"
+							className="block text-gray-700"
 							htmlFor="email">
 							Email
 						</label>
 						<input
-							className=" border rounded w-full py-2 px-3 text-gray-700"
+							className=" border rounded w-full px-3 text-gray-700"
 							id="email"
 							type="email"
 							placeholder="Email"
@@ -83,12 +83,12 @@ const Registration = () => {
 					</div>
 					<div className="mb-6">
 						<label
-							className="block text-gray-700 font-bold mb-2"
+							className="block text-gray-700"
 							htmlFor="password">
 							Password
 						</label>
 						<input
-							className=" border rounded w-full py-2 px-3 text-gray-700"
+							className=" border rounded w-full px-3 text-gray-700"
 							id="password"
 							type="password"
 							placeholder="Password"

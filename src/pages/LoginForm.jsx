@@ -16,7 +16,7 @@ function LoginForm() {
 	const { handleGit, handleGoogle, handleSignIn } = useContext(authContext);
 
 	return (
-		<div className="flex p-10 flex-col items-center justify-center bg-gray-100">
+		<div className="flex px-3 md:px-10 flex-grow flex-col items-center justify-center bg-gray-100">
 			<div className="w-full max-w-md">
 				<form
 					onSubmit={handleLogIn}
