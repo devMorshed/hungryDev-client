@@ -9,7 +9,7 @@ function LoginForm() {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	const redirectPath = location.state?.from?.pathname;
+	const redirectPath = location.state?.from?.pathname || '/'
 
 	console.log(redirectPath);
 
