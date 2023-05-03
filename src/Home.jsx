@@ -17,15 +17,22 @@ const Home = () => {
 				<div className=" p-10  max-h-[calc(100vh-200px)]   gap-10 flex flex-col md:flex-row justify-center items-center ">
 					<div
 						style={{
-							backgroundImage: `url(https://thumbs.dreamstime.com/b/web-152355073.jpg)`,
+							backgroundImage: `url(https://i.ibb.co/6PfZnJf/darkbg.jpg)`,
 						}}
-						className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
+						className="absolute bg-repeat  opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
 
 					<div className="md:w-1/2">
-						<h3 className=" text-4xl md:text-6xl text-center ">
-							Welcome to the domain of <br /> Hungry Dev
-						</h3>
+						<div className=" text-4xl lg:text-5xl text-center space-y-4 mx-auto uppercase font-black">
+							<p>Welcome to</p>
+							<p className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+								Hungry Dev
+							</p>
+						</div>
+						<button class="mt-8 px-6 py-3 block mx-auto bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-bold">
+							Explore now
+						</button>
 					</div>
+
 					<div className="flex-grow">
 						<img className="border-2 rounded-xl" src={bg} alt="" />
 					</div>
@@ -34,7 +41,16 @@ const Home = () => {
 			</section>
 			<section className="my-10 p-10">
 				<div className="container mx-auto">
-					<h3 className="text-3xl text-center">Meet Our Chefs</h3>
+					<div class="py-4">
+						<h2 class="text-4xl  lg:text-5xl xl:text-6xl  font-bold text-center transform -rotate-2">
+							<span class="bg-gradient-to-r from-amber-500 to-yellow-400 text-white px-2 clip-text rounded mr-2">
+								Our
+							</span>
+							<span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+								Chefs
+							</span>
+						</h2>
+					</div>
 					<div>
 						<div className="grid md:grid-cols-2 my-10 lg:grid-cols-3 gap-8">
 							{chefs.map((chef) => (
@@ -45,9 +61,21 @@ const Home = () => {
 				</div>
 			</section>
 			<section className=" my-10 p-10">
-				<h3 className="text-3xl text-center mb-8 ">
-					Chef Qoutes of the Day{" "}
-				</h3>
+				{/*  */}
+
+				<div class="py-8 ">
+					<h2 class="text-4xl  lg:text-5xl xl:text-6xl  font-bold text-center transform -rotate-2">
+						<span class="bg-gradient-to-r from-amber-500 to-yellow-400 text-white px-2 clip-text rounded mr-2">
+							Chefs
+						</span>
+						<span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+							Quotes
+						</span>
+					</h2>
+				</div>
+
+				{/*  */}
+
 				<div className="container mx-auto  gap-10 flex flex-col md:flex-row justify-center items-center ">
 					<Banner />
 				</div>
@@ -55,23 +83,30 @@ const Home = () => {
 			<section className=" relative rounded-xl container mx-auto my-10 lg:p-10 p-4 ">
 				<div
 					style={{
-						backgroundImage: `url(https://thumbs.dreamstime.com/b/web-152355073.jpg)`,
+						backgroundImage: `url(https://i.ibb.co/6PfZnJf/darkbg.jpg)`,
 					}}
 					className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
 				<div className=" flex flex-col gap-10 md:flex-row justify-between items-center">
 					<div className="md:w-1/2">
 						<img
 							className="rounded "
-							src="https://media.istockphoto.com/id/1160233770/photo/cutting-and-preparing-vegetables-to-share-with-friends.jpg?s=612x612&w=0&k=20&c=gnj9mCza41DgHS0JfK6LIK3b1pCF5rSCgj_0w1TjFPM="
+							src="https://i.ibb.co/QQCCXkm/help.jpg"
 							alt=""
 						/>
 					</div>
 					<div className="md:w-1/2">
 						<div className=" rounded">
 							<div className="mx-auto lg:p-20">
-								<h2 className="text-2xl text-center font-bold tracking-tight text-gray-900">
-									Let's work together
-								</h2>
+								<div class="py-4">
+									<h2 class="text-4xl  lg:text-5xl xl:text-6xl  font-bold text-center transform -rotate-2">
+										<span class="bg-gradient-to-r from-amber-500 to-yellow-400 text-white px-2 clip-text rounded mr-2">
+											Lets
+										</span>
+										<span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+											Talk !
+										</span>
+									</h2>
+								</div>
 
 								<form className="mt-8">
 									<div className="grid grid-cols-1 gap-y-2 gap-x-8 sm:grid-cols-2">

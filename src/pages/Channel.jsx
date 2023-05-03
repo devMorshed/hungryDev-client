@@ -17,11 +17,11 @@ const Channel = () => {
 				<div className="flex flex-col relative md:flex-row items-center justify-between gap-10 container p-10  w-full mx-auto">
 					<div
 						style={{
-							backgroundImage: `url(https://thumbs.dreamstime.com/b/web-152355073.jpg)`,
+							backgroundImage: `url(https://i.ibb.co/6PfZnJf/darkbg.jpg)`,
 						}}
 						className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
 					<div className="md:w-1/2 mx-auto ">
-						<LazyLoad height="100%" width='100%'>
+						<LazyLoad height="100%" width="100%">
 							<img
 								className="  rounded-xl border-white border-[5px] "
 								src={channelData.picture}
@@ -63,7 +63,7 @@ const Channel = () => {
 							key={recipe.id}>
 							<div
 								style={{
-									backgroundImage: `url(https://img.freepik.com/free-photo/handrawn-barbecue-elements_125540-588.jpg?size=626&ext=jpg)`,
+									backgroundImage: `url(https://i.ibb.co/6Df7gT0/lbg.png)`,
 								}}
 								className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
 							<h3 className=" rounded-md text-center text-2xl glass w-1/3 mx-auto font-medium">
