@@ -6,7 +6,7 @@ import { authContext } from "../Provider/AuthProvider";
 
 const Nav = () => {
 	const { user, loading } = useContext(authContext);
-	console.log(loading);
+	// console.log(loading);
 
 	return (
 		<div className="sticky top-0 right-0 left-0 my-4 z-10 ">

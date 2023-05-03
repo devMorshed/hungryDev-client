@@ -12,6 +12,7 @@ import AuthProvider from "./Provider/AuthProvider";
 import PrivateRoute from "./Private/PrivateRoute";
 import Channel from "./pages/Channel";
 import ErrorPage from "./pages/ErrorPage";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
 	{
@@ -33,7 +34,17 @@ const router = createBrowserRouter([
 					</PrivateRoute>
 				),
 				loader: ({ params }) =>
-					fetch(`https://hungrydev-devmorshed.vercel.app/chefs/${params.id}`),
+					fetch(
+						`https://hungrydev-devmorshed.vercel.app/chefs/${params.id}`
+					),
+			},
+			{
+				path: "/profile",
+				element: (
+					<PrivateRoute>
+						<Profile />
+					</PrivateRoute>
+				)
 			},
 			{
 				path: "/login",
@@ -47,8 +58,8 @@ const router = createBrowserRouter([
 				path: "/blogs",
 				element: <Blogs />,
 			},
-    ],
-    errorElement: <ErrorPage/>,
+		],
+		errorElement: <ErrorPage />,
 	},
 ]);
 

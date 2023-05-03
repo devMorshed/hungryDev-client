@@ -10,11 +10,12 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithPopup,
 	GithubAuthProvider,
-  updateProfile,
+	updateProfile,
+	signOut,
 } from "firebase/auth";
 
 const AuthProvider = ({ children }) => {
-  const [errMsg, setErrMsg] = useState('')
+	const [errMsg, setErrMsg] = useState("");
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 
@@ -47,102 +48,59 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const handleGoogle = () => {
-		signInWithPopup(auth, googleProvider)
-			.then((result) => {
-				const credential =
-					GoogleAuthProvider.credentialFromResult(result);
-				const token = credential.accessToken;
-				const user = result.user;
-
-				// console.log("user ", user);
-				// console.log("credential ", credential);
-				// console.log("token ", token);
-			})
-			.catch((error) => {
-				// Handle Errors here.
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				// The email of the user's account used.
-				const email = error.customData.email;
-				// The AuthCredential type that was used.
-				const credential =
-					GoogleAuthProvider.credentialFromError(error);
-
-				// console.log("credential ", credential);
-				// console.log("errorCode ", errorCode);
-				// console.log("errorMessage ", errorMessage);
-				// console.log("email ", email);
-			});
+		return signInWithPopup(auth, googleProvider)
 	};
 
-	const handleNewUser = (email, password) => {
-		createUserWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				// Signed in
-				const user = userCredential.user;
-				// console.log(user);
-
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				// console.log(errorMessage);
-
-				// ..
-			});
+	const handleNewUser = (email, password, path) => {
+		 return createUserWithEmailAndPassword(auth, email, password)
+			
 	};
 
 	const handleSignIn = (email, password) => {
-		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				// Signed in
-				const user = userCredential.user;
-				// console.log(user);
-				
-				
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-        // console.log(errorMessage);
-        setErrMsg(errorMessage);
-			});
-  };
-  
-  const handleUpdate = (name, photo) => {
+		return signInWithEmailAndPassword(auth, email, password)
+			
+	};
+
+	const handleUpdate = (name, photo) => {
 		updateProfile(auth.currentUser, {
-      displayName: name,
-			photoURL: photo ,
+			displayName: name,
+			photoURL: photo,
 		})
 			.then(() => {
 				// Profile updated!
 				// ...
-        // console.log("updated", name, photo);
+				// console.log("updated", name, photo);
 			})
 			.catch((error) => {
 				// An error occurred
 				// ...
-        // console.log(error);
+				// console.log(error);
 			});
   };
-
-	useEffect(() => {
-		onAuthStateChanged(auth, (user) => {
-			if (user) {
-				// User is signed in, see docs for a list of available properties
-				// https://firebase.google.com/docs/reference/js/firebase.User
-				const uid = user.uid;
-				console.log("Auth Status Changed");
-				console.log(user);
-				setUser(user);
-				setLoading(false);
-				// ...
-			} else {
-				// User is signed out
-				// ...
-			}
+  
+  const handleSignOut = () => {
+    signOut(auth)
+		.then(() => {
+			console.log("Sign-out successful.");
+		})
+		.catch((error) => {
+			// An error happened.
+      console.log("sign out error");
+      console.log(error);
 		});
-	}, []);
+  }
+
+	 useEffect(() => {
+			const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+				console.log("auth state change", currentUser);
+				setUser(currentUser);
+				setLoading(false);
+			});
+
+			return () => {
+				unsubscribe();
+			};
+		}, []);
 
 	const authInfo = {
 		loading,
@@ -153,6 +111,8 @@ const AuthProvider = ({ children }) => {
 		handleGit,
 		handleUpdate,
 		errMsg,
+		handleSignOut,
+		auth,
 	};
 
 	return (
