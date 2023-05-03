@@ -3,13 +3,13 @@ import { useLoaderData } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import bg from "../assets/foodbg.jpg";
 import { Rating } from "@smastrom/react-rating";
-
+import LazyLoad from "react-lazy-load";
 import "@smastrom/react-rating/style.css";
 import { toast } from "react-toastify";
 
 const Channel = () => {
 	const channelData = useLoaderData();
-  const [clicked, setClicked] = useState([]);
+	const [clicked, setClicked] = useState([]);
 
 	return (
 		<>
@@ -21,11 +21,13 @@ const Channel = () => {
 						}}
 						className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
 					<div className="md:w-1/2 mx-auto ">
-						<img
-							className="  rounded-xl border-white border-[5px] "
-							src={channelData.picture}
-							alt=""
-						/>
+						<LazyLoad height="100%" width='100%'>
+							<img
+								className="  rounded-xl border-white border-[5px] "
+								src={channelData.picture}
+								alt=""
+							/>
+						</LazyLoad>
 					</div>
 
 					<div className="w-full md:w-1/2  mx-auto space-y-5">

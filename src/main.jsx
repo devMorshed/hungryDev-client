@@ -53,6 +53,7 @@ const router = createBrowserRouter([
 			{
 				path: "/blogs",
 				element: <Blogs />,
+				loader: () => fetch("https://hungrydev-devmorshed.vercel.app/blogs"),
 			},
 		],
 		errorElement: <ErrorPage />,
