@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { authContext } from "../Provider/AuthProvider";
+import { Navigate } from "react-router-dom";
 
 const Profile = () => {
 	const { user, handleSignOut } = useContext(authContext);
@@ -13,7 +14,7 @@ const Profile = () => {
 			<div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
 				<h2 className="text-2xl font-bold mb-6">Profile</h2>
 
-				<div className="flex flex-col items-center">
+				{user ? <div className="flex flex-col items-center">
 					<img
 						src={user.photoURL}
 						alt="Profile"
@@ -26,7 +27,7 @@ const Profile = () => {
 						className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
 						Sign Out
 					</button>
-				</div>
+				</div> : <Navigate to={'/login'}/>}
 			</div>
 		</div>
 	);

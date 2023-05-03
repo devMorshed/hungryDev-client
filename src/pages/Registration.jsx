@@ -63,7 +63,7 @@ const Registration = () => {
 							id="photo"
 							type="text"
 							placeholder="https://example.com"
-							required
+							
 						/>
 					</div>
 					<div>
