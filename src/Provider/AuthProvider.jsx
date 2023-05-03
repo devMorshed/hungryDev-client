@@ -14,6 +14,7 @@ import {
 } from "firebase/auth";
 
 const AuthProvider = ({ children }) => {
+  const [errMsg, setErrMsg] = useState('')
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 
@@ -29,7 +30,7 @@ const AuthProvider = ({ children }) => {
 					GithubAuthProvider.credentialFromResult(result);
 				const token = credential.accessToken;
 				const user = result.user;
-				console.log(user);
+				// console.log(user);
 			})
 
 			.catch((error) => {
@@ -53,9 +54,9 @@ const AuthProvider = ({ children }) => {
 				const token = credential.accessToken;
 				const user = result.user;
 
-				console.log("user ", user);
-				console.log("credential ", credential);
-				console.log("token ", token);
+				// console.log("user ", user);
+				// console.log("credential ", credential);
+				// console.log("token ", token);
 			})
 			.catch((error) => {
 				// Handle Errors here.
@@ -67,10 +68,10 @@ const AuthProvider = ({ children }) => {
 				const credential =
 					GoogleAuthProvider.credentialFromError(error);
 
-				console.log("credential ", credential);
-				console.log("errorCode ", errorCode);
-				console.log("errorMessage ", errorMessage);
-				console.log("email ", email);
+				// console.log("credential ", credential);
+				// console.log("errorCode ", errorCode);
+				// console.log("errorMessage ", errorMessage);
+				// console.log("email ", email);
 			});
 	};
 
@@ -79,13 +80,13 @@ const AuthProvider = ({ children }) => {
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
-				console.log(user);
+				// console.log(user);
 
 			})
 			.catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
-				console.log(errorMessage);
+				// console.log(errorMessage);
 
 				// ..
 			});
@@ -96,14 +97,15 @@ const AuthProvider = ({ children }) => {
 			.then((userCredential) => {
 				// Signed in
 				const user = userCredential.user;
-				console.log(user);
+				// console.log(user);
 				
 				
 			})
 			.catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
-				console.log(errorMessage);
+        // console.log(errorMessage);
+        setErrMsg(errorMessage);
 			});
   };
   
@@ -115,12 +117,12 @@ const AuthProvider = ({ children }) => {
 			.then(() => {
 				// Profile updated!
 				// ...
-        console.log("updated", name, photo);
+        // console.log("updated", name, photo);
 			})
 			.catch((error) => {
 				// An error occurred
 				// ...
-        console.log(error);
+        // console.log(error);
 			});
   };
 
@@ -150,6 +152,7 @@ const AuthProvider = ({ children }) => {
 		handleSignIn,
 		handleGit,
 		handleUpdate,
+		errMsg,
 	};
 
 	return (

@@ -11,6 +11,7 @@ import Registration from "./pages/Registration";
 import AuthProvider from "./Provider/AuthProvider";
 import PrivateRoute from "./Private/PrivateRoute";
 import Channel from "./pages/Channel";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
 	{
@@ -46,7 +47,8 @@ const router = createBrowserRouter([
 				path: "/blogs",
 				element: <Blogs />,
 			},
-		],
+    ],
+    errorElement: <ErrorPage/>,
 	},
 ]);
 

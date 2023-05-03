@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import ChefCard from "./components/ChefCard";
 import bg from "./assets/foodbg.jpg";
 import Banner from "./components/Banner";
+  import { ToastContainer, toast } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
 	const chefs = useLoaderData();

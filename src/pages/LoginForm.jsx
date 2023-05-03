@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { authContext } from "../Provider/AuthProvider";
 
 function LoginForm() {
+ 
+  const { handleGit, handleGoogle, handleSignIn, errMsg } = useContext(authContext);
+
 	const handleLogIn = (event) => {
 		event.preventDefault();
     console.log(event);
@@ -13,7 +16,6 @@ function LoginForm() {
     handleSignIn(email, password)
 	};
 
-	const { handleGit, handleGoogle, handleSignIn } = useContext(authContext);
 
 	return (
 		<div className="flex px-3 md:px-10 flex-grow flex-col items-center justify-center bg-gray-100">
@@ -49,7 +51,11 @@ function LoginForm() {
 							required
 						/>
 					</div>
-
+					{errMsg && (
+						<div className="my-4 text-center text-warning rounded-md">
+							{errMsg}
+						</div>
+					)}
 					<div className="mt-4">
 						<button
 							className="bg-orange-400   hover:bg-orange-600 text-white font-bold py-2 px-4 rounded w-full "

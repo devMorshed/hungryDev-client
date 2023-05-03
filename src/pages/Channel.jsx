@@ -5,11 +5,12 @@ import bg from "../assets/foodbg.jpg";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
+import { toast } from "react-toastify";
 
 const Channel = () => {
 	const channelData = useLoaderData();
 
-	console.log(channelData);
+	// console.log(channelData);
 	return (
 		<>
 			<section className="p-4">
@@ -54,7 +55,7 @@ const Channel = () => {
 
 			<section className="container my-10 py-10 mx-auto p-4 ">
 				<div className="flex flex-col xl:flex-row items-center justify-between gap-10">
-					{console.log(channelData.recipes)}
+					
 					{channelData.recipes.map((recipe) => (
 						<div
 							className=" border shadow-lg min-h-[650px]  relative xl:w-[800px] lg:w-[750px] md:w-[650px] sm:w-[550px]  flex flex-col justify-center space-y-4 p-4 rounded-xl"
@@ -98,7 +99,8 @@ const Channel = () => {
 									/>
 								</div>
 
-								<button className="btn rounded-md btn-warning gap-2">
+                <button onClick={() => {toast(`${recipe.name} loved! `)}} className="btn rounded-md btn-warning gap-2">
+                  
 									Love
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
