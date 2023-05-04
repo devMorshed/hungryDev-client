@@ -2,8 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../Provider/AuthProvider";
 import { signOut } from "firebase/auth";
+import useTitle from "../hooks/useTitle";
 
 const Registration = () => {
+  useTitle("Registration");
+
 	const { auth, handleNewUser, handleUpdate } = useContext(authContext);
 	const [errMsg, setErrMsg] = useState("");
 	const navigate = useNavigate();

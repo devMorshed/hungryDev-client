@@ -4,8 +4,11 @@ import ChefCard from "./components/ChefCard";
 import SectionHeading from "./components/SectionHeading";
 import QoutesCarousel from "./components/QoutesCarousel";
 import AbsoluteBG from "./components/AbsoluteBG";
+import useTitle from "./hooks/useTitle";
 
 const Home = () => {
+  useTitle("Home");
+
 	const chefs = useLoaderData();
 	return (
 		<div className="">

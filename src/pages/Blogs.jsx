@@ -2,9 +2,11 @@ import { createRef } from "react";
 import { useLoaderData } from "react-router-dom";
 import Pdf from "react-to-pdf";
 import BlogCard from "../components/BlogCard";
+import useTitle from "../hooks/useTitle";
 const ref = createRef();
 
 const Blogs = () => {
+  useTitle("Blogs")
 	const data = useLoaderData();
 
 	return (

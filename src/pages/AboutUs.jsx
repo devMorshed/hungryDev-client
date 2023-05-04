@@ -2,8 +2,10 @@ import SectionHeading from "../components/SectionHeading";
 import AbsoluteBG from "../components/AbsoluteBG";
 import { SiCodechef } from "react-icons/si";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 
 const AboutUs = () => {
+  useTitle("About");
 	const data = useLoaderData();
 
 	const { instructor, features, packages } = data;

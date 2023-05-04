@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import { authContext } from "../Provider/AuthProvider";
 import { Navigate } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 
 const Profile = () => {
+  useTitle("Profile");
+
 	const { user, handleSignOut } = useContext(authContext);
 
 	const signOutHandler = () => {

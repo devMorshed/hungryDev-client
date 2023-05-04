@@ -3,8 +3,11 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { authContext } from "../Provider/AuthProvider";
+import useTitle from "../hooks/useTitle";
 
 function LoginForm() {
+  useTitle("Login");
+
   const [errMsg, setErrMsg] = useState("");
   
 	const navigate = useNavigate();

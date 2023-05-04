@@ -8,8 +8,11 @@ import "@smastrom/react-rating/style.css";
 import { toast } from "react-toastify";
 import Stats from "../components/Stats";
 import AbsoluteBG from "../components/AbsoluteBG";
+import useTitle from "../hooks/useTitle";
 
 const Channel = () => {
+  useTitle("Channel");
+
 	const {
 		picture,
 		name,
