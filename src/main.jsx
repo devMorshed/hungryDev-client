@@ -13,6 +13,7 @@ import PrivateRoute from "./Private/PrivateRoute";
 import Channel from "./pages/Channel";
 import ErrorPage from "./pages/ErrorPage";
 import Profile from "./pages/Profile";
+import AboutUs from "./pages/AboutUs";
 
 const router = createBrowserRouter([
 	{
@@ -43,6 +44,12 @@ const router = createBrowserRouter([
 				element: <Profile />,
 			},
 			{
+				path: "/about",
+				element: <AboutUs />,
+				loader: () =>
+					fetch("https://hungrydev-devmorshed.vercel.app/about"),
+			},
+			{
 				path: "/login",
 				element: <LoginForm />,
 			},
@@ -53,7 +60,8 @@ const router = createBrowserRouter([
 			{
 				path: "/blogs",
 				element: <Blogs />,
-				loader: () => fetch("https://hungrydev-devmorshed.vercel.app/blogs"),
+				loader: () =>
+					fetch("https://hungrydev-devmorshed.vercel.app/blogs"),
 			},
 		],
 		errorElement: <ErrorPage />,

@@ -20,6 +20,7 @@ const Nav = () => {
 				<div className="flex justify-between items-center gap-2 md:gap-6 xl:gap-8">
 					<NavBtn to={"/"}> Home </NavBtn>
 					<NavBtn to={"/blogs"}>Blogs</NavBtn>
+					<NavBtn to={"/about"}>About</NavBtn>
 
 					{/* conditional rendering of user, loader and login btn  */}
 
