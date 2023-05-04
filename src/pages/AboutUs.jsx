@@ -6,8 +6,8 @@ import { useLoaderData } from "react-router-dom";
 const AboutUs = () => {
 	const data = useLoaderData();
 
-	const { instructor } = data;
-	console.log(instructor);
+	const { instructor, features, packages } = data;
+	console.log(features);
 
 	return (
 		<div className="container my-10 mx-auto">
@@ -17,9 +17,9 @@ const AboutUs = () => {
 				</div>
 
 				<p className="text-lg w-10/12 mx-auto md:text-xl text-white mb-8">
-					We are an online video platform based cooking course
-					directed by experienced chefs. Our courses offer a wide
-					variety of features to help you improve your culinary
+					This is an online video platform based cooking course
+					directed by the most experienced chef. This courses offer a
+					wide variety of features to help you improve your culinary
 					skills, from beginner to advanced.
 				</p>
 			</div>
@@ -33,7 +33,7 @@ const AboutUs = () => {
 				<div className="flex flex-col md:flex-row justify-center items-center lg:px-20">
 					<img
 						className=" m-10 rounded-xl w-1/2 border-2 border-white shadow-lg"
-						src={"https://i.ibb.co/hYbyJKZ/error.png"}
+						src={instructor.img1}
 						alt={instructor.name}
 					/>
 					<div>
@@ -50,6 +50,61 @@ const AboutUs = () => {
 					</div>
 				</div>
 			</div>
+
+			<section className=" container mx-auto my-10">
+				<div className="">
+					<div className="my-3">
+						<SectionHeading t1={"Features"} t2={""} />
+					</div>
+
+					<div className="bg-gray-800 p-10 rounded-xl flex flex-col md:flex-row gap-10">
+						{features.map((feature) => (
+							<div className="" key={feature.id}>
+								<p className="text-orange-400 my-2 font-semibold tracking-tight">
+									{feature.title}
+								</p>
+								<p className="text-zinc-400">
+									{feature.description}
+								</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section className=" container mx-auto my-10">
+				<div className="relative lg:my-4 p-10">
+					<AbsoluteBG
+						src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"}
+						style={"opacity-10 brightness-100"}
+					/>
+
+					<div className="">
+						<SectionHeading t1={"Course"} t2={"Package"} />
+					</div>
+
+					<div className="py-3 rounded-xl grid lg:grid-cols-3 gap-10">
+						{packages.map((pack) => (
+							<div
+								className="relative shadow-lg p-4"
+								key={pack.id}>
+								<AbsoluteBG
+									src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"}
+									style={"opacity-20 brightness-50"}
+								/>
+
+								<p className="btn glass transform -rotate-6 shadow-md rounded-md text-orange-600 text-2xl tracking-wider">
+									{pack.price}
+								</p>
+								<p className="my-3 font-semibold text-xl tracking-tight">
+									{pack.title}
+								</p>
+								<p className="">{pack.description}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
 		</div>
 	);
 };
