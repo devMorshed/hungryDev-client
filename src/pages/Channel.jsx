@@ -25,11 +25,18 @@ const Channel = () => {
 		<>
 			<section className="p-4">
 				<div className="flex flex-col relative md:flex-row items-center justify-between gap-10 container p-10  w-full mx-auto">
-					<AbsoluteBG src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"} style={'opacity-10'} />
+					<AbsoluteBG
+						src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"}
+						style={"opacity-10"}
+					/>
 					<div className="md:w-1/2 mx-auto ">
-						<LazyLoad height="100%" width="100%">
+						<LazyLoad
+							height={"100%"}
+							width="100%"
+							offset={500}
+							threshold={0.5}>
 							<img
-								className="  rounded-xl border-white border-[5px] "
+								className="rounded-xl border-white border-[5px] "
 								src={picture}
 								alt=""
 							/>

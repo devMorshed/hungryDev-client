@@ -5,26 +5,21 @@ import { FcGoogle } from "react-icons/fc";
 import { authContext } from "../Provider/AuthProvider";
 
 function LoginForm() {
-	const [errMsg, setErrMsg] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+  
 	const navigate = useNavigate();
 	const location = useLocation();
-
-	const redirectPath = location.state?.from?.pathname || '/'
-
-	console.log(redirectPath);
+	const redirectPath = location.state?.from?.pathname || "/";
 
 	const { handleGit, handleGoogle, handleSignIn } = useContext(authContext);
 
 	const handleLogIn = (event) => {
 		event.preventDefault();
-		console.log(event);
 		const email = event.target.email.value;
 		const password = event.target.password.value;
 		handleSignIn(email, password)
-			.then((userCredential) => {
-				// Signed in
-				const user = userCredential.user;
-				console.log(user);
+			.then(() => {
+				event.target.reset();
 				navigate(redirectPath);
 			})
 			.catch((error) => {
@@ -32,19 +27,19 @@ function LoginForm() {
 			});
 	};
 
-	const googleHandler = () => {
-		handleGoogle()
+	const providerLoginHandler = (prov) => {
+		prov()
 			.then((result) => {
-        console.log(result);
-        navigate(redirectPath);
+				navigate(redirectPath);
 			})
 			.catch((error) => {
 				setErrMsg(error.message);
 			});
-	};
+  };
+  
 
 	return (
-		<div className="flex px-3 md:px-10 flex-grow flex-col items-center justify-center">
+		<div className="flex h-[calc(100vh-300px)] p-10 flex-grow flex-col items-center justify-center">
 			<div className="w-full max-w-xl">
 				<form
 					onSubmit={handleLogIn}
@@ -92,14 +87,18 @@ function LoginForm() {
 				</form>
 				<div className="flex my-4 py-3  md:gap-4 ">
 					<button
-						onClick={googleHandler}
+						onClick={() => {
+							providerLoginHandler(handleGoogle);
+						}}
 						className="mx-auto block glass hover:bg-orange-500 btn btn-outline rounded">
 						<p className="flex gap-3 items-center">
 							Log In using <FcGoogle size={30} />
 						</p>
 					</button>
 					<button
-						onClick={handleGit}
+						onClick={() => {
+							providerLoginHandler(handleGit);
+						}}
 						className=" mx-auto block glass hover:bg-orange-500 btn btn-outline rounded">
 						<p className="flex gap-3 items-center">
 							Log In using <FaGithub size={30} />

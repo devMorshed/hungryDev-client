@@ -1,24 +1,16 @@
-import { Outlet, useLoaderData } from "react-router-dom";
-import { Tooltip } from "react-tooltip";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import ChefCard from "./components/ChefCard";
-import bg from "./assets/foodbg.jpg";
-import Banner from "./components/QoutesCarousel";
-import { ToastContainer, toast } from "react-toastify";
+import { useLoaderData } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import ChefCard from "./components/ChefCard";
 import SectionHeading from "./components/SectionHeading";
 import QoutesCarousel from "./components/QoutesCarousel";
 import AbsoluteBG from "./components/AbsoluteBG";
 
-
 const Home = () => {
 	const chefs = useLoaderData();
-	// https://i.ibb.co/pWTdFvT/doodlefooddark.jpg
 	return (
 		<div className="">
 			<section className="container relative  mx-auto my-4 p-4  lg:p-10 rounded-xl">
-				<div className=" md:p-10  max-h-[calc(100vh-200px)]   gap-10 flex flex-col md:flex-row justify-center items-center ">
+				<div className=" md:p-10  max-h-[calc(100vh-200px)] gap-10 flex flex-col md:flex-row justify-center items-center ">
 					<AbsoluteBG
 						src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"}
 						style={"opacity-20 brightness-50"}
@@ -27,40 +19,40 @@ const Home = () => {
 					<div className="md:w-1/2">
 						<div className=" text-4xl lg:text-5xl text-center space-y-4 mx-auto uppercase font-black">
 							<p>Welcome to</p>
-							<p className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-								Hungry Dev
-							</p>
+							<SectionHeading t1={"Hungry"} t2={"Dev"} />
 						</div>
-						<button class="mt-8 px-6 py-3 block mx-auto bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-bold">
+						<button className="mt-8 px-6 py-3 block mx-auto bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-bold">
 							Explore now
 						</button>
 					</div>
 
 					<div className="flex-grow">
-						<img className="border-2 rounded-xl" src={bg} alt="" />
+						<img
+							className="border-2 rounded-xl"
+							src={"https://i.ibb.co/Lzn8Kcs/foodbg.jpg"}
+							alt=""
+						/>
 					</div>
 					{/* <Banner/> */}
 				</div>
 			</section>
-      <section className=" container mx-auto py-10 my-10">
-        
+			<section className=" container mx-auto py-10 p-4 my-10">
 				<SectionHeading t1={"Our"} t2={"Chefs"} />
 
-				
-					<div className="grid md:grid-cols-2 border lg:grid-cols-3  my-4 gap-8">
-						{chefs.map((chef) => (
-							<ChefCard key={chef.id} data={chef} />
-						))}
-					</div>
-				
+				<div className="grid md:grid-cols-2 lg:grid-cols-3  my-4 gap-8">
+					{chefs.map((chef) => (
+						<ChefCard key={chef.id} data={chef} />
+					))}
+				</div>
 			</section>
-			<section className="container mx-auto py-10 my-10 ">
+			<section className="container mx-auto py-10 p-4 my-10 ">
 				<SectionHeading t1={"Chefs"} t2={"Qoutes"} />
 
 				<div className=" gap-10 flex flex-col md:flex-row justify-center items-center ">
 					<QoutesCarousel />
 				</div>
 			</section>
+
 			<section className="container relative rounded-xl  mx-auto my-10 md:p-10 p-4 ">
 				<AbsoluteBG
 					src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"}

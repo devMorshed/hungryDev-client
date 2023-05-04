@@ -10,7 +10,6 @@ const Registration = () => {
 
 	const handleSignUp = (event) => {
 		event.preventDefault();
-		// console.log(event);
 		const email = event.target.email.value;
 		const password = event.target.password.value;
 		const name = event.target.name.value;
@@ -27,13 +26,13 @@ const Registration = () => {
 					navigate("/login");
 				})
 				.catch((error) => {
-					console.log(error);
+					setErrMsg(error.message);
 				});
 		}
 	};
 
 	return (
-		<div className="flex px-10 flex-col items-center flex-grow justify-center">
+		<div className="flex h-[calc(100vh-300px)] p-10 flex-col items-center flex-grow justify-center">
 			<div className="w-full max-w-xl">
 				<form
 					onSubmit={handleSignUp}
@@ -63,7 +62,6 @@ const Registration = () => {
 							id="photo"
 							type="text"
 							placeholder="https://example.com"
-							
 						/>
 					</div>
 					<div>

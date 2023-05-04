@@ -24,83 +24,42 @@ const AuthProvider = ({ children }) => {
 	const gitProvider = new GithubAuthProvider();
 
 	const handleGit = () => {
-		signInWithPopup(auth, gitProvider)
-			.then((result) => {
-				// This gives you a GitHub Access Token. You can use it to access the GitHub API.
-				const credential =
-					GithubAuthProvider.credentialFromResult(result);
-				const token = credential.accessToken;
-				const user = result.user;
-				// console.log(user);
-			})
-
-			.catch((error) => {
-				// Handle Errors here.
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				// The email of the user's account used.
-				const email = error.customData.email;
-				// The AuthCredential type that was used.
-				const credential =
-					GithubAuthProvider.credentialFromError(error);
-				console.log(error);
-			});
+		return signInWithPopup(auth, gitProvider);
 	};
 
 	const handleGoogle = () => {
-		return signInWithPopup(auth, googleProvider)
+		return signInWithPopup(auth, googleProvider);
 	};
 
 	const handleNewUser = (email, password, path) => {
-		 return createUserWithEmailAndPassword(auth, email, password)
-			
+		return createUserWithEmailAndPassword(auth, email, password);
 	};
 
 	const handleSignIn = (email, password) => {
-		return signInWithEmailAndPassword(auth, email, password)
-			
+		return signInWithEmailAndPassword(auth, email, password);
 	};
 
 	const handleUpdate = (name, photo) => {
 		updateProfile(auth.currentUser, {
 			displayName: name,
 			photoURL: photo,
-		})
-			.then(() => {
-				// Profile updated!
-				// ...
-				// console.log("updated", name, photo);
-			})
-			.catch((error) => {
-				// An error occurred
-				// ...
-				// console.log(error);
-			});
-  };
-  
-  const handleSignOut = () => {
-    signOut(auth)
-		.then(() => {
-			console.log("Sign-out successful.");
-		})
-		.catch((error) => {
-			// An error happened.
-      console.log("sign out error");
-      console.log(error);
 		});
-  }
+	};
 
-	 useEffect(() => {
-			const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-				console.log("auth state change", currentUser);
-				setUser(currentUser);
-				setLoading(false);
-			});
+	const handleSignOut = () => {
+		signOut(auth);
+	};
 
-			return () => {
-				unsubscribe();
-			};
-		}, []);
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser);
+			setLoading(false);
+		});
+
+		return () => {
+			unsubscribe();
+		};
+	}, []);
 
 	const authInfo = {
 		loading,
