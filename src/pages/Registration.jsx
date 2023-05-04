@@ -34,7 +34,7 @@ const Registration = () => {
 
 	return (
 		<div className="flex px-10 flex-col items-center flex-grow justify-center">
-			<div className="w-full max-w-md">
+			<div className="w-full max-w-xl">
 				<form
 					onSubmit={handleSignUp}
 					className="bg-white shadow-lg rounded-xl px-8 pt-6 pb-8 mb-4 space-y-5">

@@ -10,7 +10,7 @@ const Nav = () => {
 
 	return (
 		<div className="sticky top-0 right-0 left-0 my-4 z-10 ">
-			<div className="container rounded bg-zinc-300 shadow-lg py-2 px-10  flex justify-around items-center mx-auto">
+			<div className="container rounded bg-zinc-300 shadow-lg py-1 md:px-10  flex justify-around  items-center mx-auto">
 				<Link to={"/"}>
 					<h2 class="font-bold text-center transform -rotate-2">
 						<span class="bg-gradient-to-r from-amber-500 to-yellow-400 text-white p-2 clip-text rounded mr-2">
@@ -19,7 +19,7 @@ const Nav = () => {
 						
 					</h2>
 				</Link>
-				<div className="flex items-center gap-4">
+				<div className="flex justify-between items-center gap-2 md:gap-6 xl:gap-8">
 					<NavBtn to={"/"}> Home </NavBtn>
 					<NavBtn to={"/blogs"}>Blogs</NavBtn>
 

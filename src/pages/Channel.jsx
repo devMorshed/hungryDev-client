@@ -6,71 +6,66 @@ import { Rating } from "@smastrom/react-rating";
 import LazyLoad from "react-lazy-load";
 import "@smastrom/react-rating/style.css";
 import { toast } from "react-toastify";
+import Stats from "../components/Stats";
+import AbsoluteBG from "../components/AbsoluteBG";
 
 const Channel = () => {
-	const channelData = useLoaderData();
+	const {
+		picture,
+		name,
+		bio,
+		recipes,
+		years_of_experience,
+		likes,
+		num_recipes,
+	} = useLoaderData();
 	const [clicked, setClicked] = useState([]);
 
 	return (
 		<>
 			<section className="p-4">
 				<div className="flex flex-col relative md:flex-row items-center justify-between gap-10 container p-10  w-full mx-auto">
-					<div
-						style={{
-							backgroundImage: `url(https://i.ibb.co/6PfZnJf/darkbg.jpg)`,
-						}}
-						className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
+					<AbsoluteBG src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"} style={'opacity-10'} />
 					<div className="md:w-1/2 mx-auto ">
 						<LazyLoad height="100%" width="100%">
 							<img
 								className="  rounded-xl border-white border-[5px] "
-								src={channelData.picture}
+								src={picture}
 								alt=""
 							/>
 						</LazyLoad>
 					</div>
 
 					<div className="w-full md:w-1/2  mx-auto space-y-5">
-						<h2 className="text-3xl">{channelData.name}</h2>
-						<p>{channelData.bio}</p>
+						<h2 className="text-3xl">{name}</h2>
+						<p>{bio}</p>
 
-						<div className="flex justify-between">
-							<p>
-								{" "}
-								<span className="font-bold"> Likes: </span>
-								{channelData.likes}
-							</p>
-							<p>
-								{" "}
-								<span className="font-bold"> Recipes: </span>
-								{channelData.num_recipes}
-							</p>
-							<p>
-								{" "}
-								<span className="font-bold"> Experience: </span>
-								{channelData.years_of_experience} Years
-							</p>
-						</div>
+						<Stats
+							likes={likes}
+							recipes={num_recipes}
+							experience={years_of_experience}
+						/>
 					</div>
 				</div>
 			</section>
 
 			<section className="container my-10 py-10 mx-auto p-4 ">
 				<div className="flex flex-col xl:flex-row items-center justify-between gap-10">
-					{channelData.recipes.map((recipe) => (
+					{recipes.map((recipe) => (
 						<div
 							className=" border shadow-lg min-h-[650px]  relative xl:w-[800px] lg:w-[750px] md:w-[650px] sm:w-[550px]  flex flex-col justify-center space-y-4 p-4 rounded-xl"
 							key={recipe.id}>
-							<div
-								style={{
-									backgroundImage: `url(https://i.ibb.co/6Df7gT0/lbg.png)`,
-								}}
-								className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
+							<AbsoluteBG
+								src={"https://i.ibb.co/6Df7gT0/lbg.png"}
+								style={"opacity-10"}
+							/>
 							<h3 className=" rounded-md text-center text-2xl glass w-1/3 mx-auto font-medium">
 								{recipe.name}
 							</h3>
 							<div>
-								<h4 className="text-center">Ingredients</h4>
+								<h4 className="text-center my-2">
+									Ingredients
+								</h4>
 								<ul className="list-disc grid grid-cols-2 text-xs   marker:text-red-500 marker:text-2xl list-inside">
 									{recipe.ingredients.map((i, index) => (
 										<li key={index} className="">
@@ -81,9 +76,10 @@ const Channel = () => {
 							</div>
 
 							<div>
-								<h4 className="text-center">Cooking Method:</h4>
+								<h4 className="text-center my-2">
+									Cooking Method:
+								</h4>
 								<ul className="list-inside text-xs">
-									Method:
 									{recipe?.method?.map((i, idx) => (
 										<li key={idx}>{i}</li>
 									))}

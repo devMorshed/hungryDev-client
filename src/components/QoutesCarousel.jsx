@@ -6,10 +6,10 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
-
 import { EffectCoverflow, Navigation } from "swiper";
+import AbsoluteBG from "./AbsoluteBG";
 
-export default function Banner() {
+export default function QoutesCarousel() {
 	const [_, setInit] = useState();
 	const [activeIndex, setActiveIndex] = useState(0);
 
@@ -23,7 +23,7 @@ export default function Banner() {
 				imgLink: "https://i.ibb.co/rMpPtnv/chef6.jpg",
 				homeData: {
 					title: "michael-strahan",
-					text: " If you're not the one cooking, stay out of the way and compliment the chef.",
+					text: " If you're not the one cooking, then stay put and compliment the chef.",
 					bgImg: "https://i.ibb.co/MffPfdk/foodbg1.jpg",
 				},
 			},
@@ -41,7 +41,7 @@ export default function Banner() {
 				imgLink: "https://i.ibb.co/x6Z7Tz2/chef4.jpg",
 				homeData: {
 					title: "Ranveer Brar",
-					text: "If you're a happy person around food, you can be a professional chef. It's fueled by passion.",
+					text: "If you're a happy person around food, you can be a professional chef.",
 					bgImg: "https://i.ibb.co/Gkdr0Rm/foodbg3.jpg",
 				},
 			},
@@ -53,14 +53,17 @@ export default function Banner() {
 	};
 
 	return (
-		<div className="h-[calc(100vh-200px)] w-full">
-			<div
-				style={{
-					backgroundImage: `url(${slideData.slides[activeIndex]?.homeData.bgImg})`,
-				}}
-				className="rounded-xl w-full h-full flex flex-col md:flex-row items-center gap-10 justify-center p-10 bg-cover bg-center bg-no-repeat ">
-				<div className="w-full md:p-10 lg:p-20 space-y-6">
-					<h2 className=" text-center text-lg  md:text-2xl lg:text-4xl text-white font-mono">
+    <div className=" relative w-full my-6">
+      
+      
+			
+
+      <AbsoluteBG src={slideData.slides[activeIndex]?.homeData.bgImg} style={'brightness-50 bg-cover'}  />
+
+
+			<div className="rounded-xl w-full h-full flex flex-col md:flex-row items-center gap-10 justify-center p-10 bg-cover bg-center bg-no-repeat ">
+				<div className="lg:p-20 space-y-6">
+					<h2 className=" text-center text-lg  brig md:text-2xl lg:text-4xl text-white font-mono">
 						{slideData.slides[activeIndex]?.homeData.text}
 					</h2>
 					<p className="italic text-center text-xl text-orange-500">
@@ -68,7 +71,7 @@ export default function Banner() {
 					</p>
 				</div>
 
-				<div className="md:relative md:w-1/2 w-full text-center md:h-auto mx-auto ">
+				<div className=" md:w-1/2 w-full text-center md:h-auto mx-auto ">
 					<Swiper
 						onInit={() => setInit(true)}
 						onSlideChange={handleOnSlideChange}

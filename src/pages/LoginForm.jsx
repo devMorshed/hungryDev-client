@@ -45,7 +45,7 @@ function LoginForm() {
 
 	return (
 		<div className="flex px-3 md:px-10 flex-grow flex-col items-center justify-center">
-			<div className="w-full max-w-md">
+			<div className="w-full max-w-xl">
 				<form
 					onSubmit={handleLogIn}
 					className="bg-white shadow-lg rounded-xl px-8 pt-6 pb-8 mb-4">

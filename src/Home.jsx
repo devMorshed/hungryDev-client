@@ -4,22 +4,25 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import ChefCard from "./components/ChefCard";
 import bg from "./assets/foodbg.jpg";
-import Banner from "./components/Banner";
-  import { ToastContainer, toast } from "react-toastify";
-  import "react-toastify/dist/ReactToastify.css";
+import Banner from "./components/QoutesCarousel";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import SectionHeading from "./components/SectionHeading";
+import QoutesCarousel from "./components/QoutesCarousel";
+import AbsoluteBG from "./components/AbsoluteBG";
+
 
 const Home = () => {
 	const chefs = useLoaderData();
 	// https://i.ibb.co/pWTdFvT/doodlefooddark.jpg
 	return (
 		<div className="">
-			<section className="my-4 relative container mx-auto rounded-xl">
-				<div className=" p-10  max-h-[calc(100vh-200px)]   gap-10 flex flex-col md:flex-row justify-center items-center ">
-					<div
-						style={{
-							backgroundImage: `url(https://i.ibb.co/6PfZnJf/darkbg.jpg)`,
-						}}
-						className="absolute bg-repeat  opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
+			<section className="container relative  mx-auto my-4 p-4  lg:p-10 rounded-xl">
+				<div className=" md:p-10  max-h-[calc(100vh-200px)]   gap-10 flex flex-col md:flex-row justify-center items-center ">
+					<AbsoluteBG
+						src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"}
+						style={"opacity-20 brightness-50"}
+					/>
 
 					<div className="md:w-1/2">
 						<div className=" text-4xl lg:text-5xl text-center space-y-4 mx-auto uppercase font-black">
@@ -39,53 +42,31 @@ const Home = () => {
 					{/* <Banner/> */}
 				</div>
 			</section>
-			<section className="my-10 p-10">
-				<div className="container mx-auto">
-					<div class="py-4">
-						<h2 class="text-4xl  lg:text-5xl xl:text-6xl  font-bold text-center transform -rotate-2">
-							<span class="bg-gradient-to-r from-amber-500 to-yellow-400 text-white px-2 clip-text rounded mr-2">
-								Our
-							</span>
-							<span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-								Chefs
-							</span>
-						</h2>
+      <section className=" container mx-auto py-10 my-10">
+        
+				<SectionHeading t1={"Our"} t2={"Chefs"} />
+
+				
+					<div className="grid md:grid-cols-2 border lg:grid-cols-3  my-4 gap-8">
+						{chefs.map((chef) => (
+							<ChefCard key={chef.id} data={chef} />
+						))}
 					</div>
-					<div>
-						<div className="grid md:grid-cols-2 my-10 lg:grid-cols-3 gap-8">
-							{chefs.map((chef) => (
-								<ChefCard key={chef.id} data={chef} />
-							))}
-						</div>
-					</div>
+				
+			</section>
+			<section className="container mx-auto py-10 my-10 ">
+				<SectionHeading t1={"Chefs"} t2={"Qoutes"} />
+
+				<div className=" gap-10 flex flex-col md:flex-row justify-center items-center ">
+					<QoutesCarousel />
 				</div>
 			</section>
-			<section className=" my-10 p-10">
-				{/*  */}
+			<section className="container relative rounded-xl  mx-auto my-10 md:p-10 p-4 ">
+				<AbsoluteBG
+					src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"}
+					style={"brightness-50 opacity-10"}
+				/>
 
-				<div class="py-8 ">
-					<h2 class="text-4xl  lg:text-5xl xl:text-6xl  font-bold text-center transform -rotate-2">
-						<span class="bg-gradient-to-r from-amber-500 to-yellow-400 text-white px-2 clip-text rounded mr-2">
-							Chefs
-						</span>
-						<span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-							Quotes
-						</span>
-					</h2>
-				</div>
-
-				{/*  */}
-
-				<div className="container mx-auto  gap-10 flex flex-col md:flex-row justify-center items-center ">
-					<Banner />
-				</div>
-			</section>
-			<section className=" relative rounded-xl container mx-auto my-10 lg:p-10 p-4 ">
-				<div
-					style={{
-						backgroundImage: `url(https://i.ibb.co/6PfZnJf/darkbg.jpg)`,
-					}}
-					className="absolute bg-repeat opacity-10 contrast-125  top-0 right-0 left-0 bottom-0 -z-10"></div>
 				<div className=" flex flex-col gap-10 md:flex-row justify-between items-center">
 					<div className="md:w-1/2">
 						<img
@@ -97,16 +78,7 @@ const Home = () => {
 					<div className="md:w-1/2">
 						<div className=" rounded">
 							<div className="mx-auto lg:p-20">
-								<div class="py-4">
-									<h2 class="text-4xl  lg:text-5xl xl:text-6xl  font-bold text-center transform -rotate-2">
-										<span class="bg-gradient-to-r from-amber-500 to-yellow-400 text-white px-2 clip-text rounded mr-2">
-											Lets
-										</span>
-										<span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-											Talk !
-										</span>
-									</h2>
-								</div>
+								<SectionHeading t1={"Lets"} t2={"Talk!"} />
 
 								<form className="mt-8">
 									<div className="grid grid-cols-1 gap-y-2 gap-x-8 sm:grid-cols-2">

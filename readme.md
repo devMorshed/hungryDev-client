@@ -1,14 +1,12 @@
-task_Completed: 
-1. Initial setup.
-2. ENV Variables. 
+# Hungry Dev App
+This app is a basic React app that I built to demonstrate my skills in building web applications using React.
 
+## Features
+- The app has a responsive design that works well on both desktop, tablet and mobile devices.
+- It uses React Router for client-side routing.
+- It uses Express to make HTTP requests for API.
+- It uses TailwindCSS to provide a responsive and modern UI and make it super customiseable.
+- It is built with a modular architecture, making it easy to extend and maintain.
 
-Quotes: 
-1. If you're not the one cooking, stay out of the way and compliment the chef.
-- michael-strahan
-
-2.'Chef' doesn't mean that you're the best cook, it simply means 'boss.' 
-- Tom Colicchio.
-
-3. If you're a happy person around food, you can be a professional chef. It's fueled by passion. 
-- Ranveer Brar
+## Live Site
+[Click Me](https://b07a10.web.app) to view the live site. 
