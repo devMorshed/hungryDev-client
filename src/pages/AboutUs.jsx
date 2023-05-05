@@ -3,7 +3,7 @@ import AbsoluteBG from "../components/AbsoluteBG";
 import { SiCodechef } from "react-icons/si";
 import { useLoaderData } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
-import MapComponent from "../components/MyComponent";
+import MapComponent from "../components/MapComponent";
 
 const AboutUs = () => {
 	useTitle("About");

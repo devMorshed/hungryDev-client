@@ -4,14 +4,20 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { authContext } from "../Provider/AuthProvider";
 import useTitle from "../hooks/useTitle";
+import { FiSun, FiMoon } from "react-icons/fi";
+
 
 function LoginForm() {
   useTitle("Login");
 
+
+	const [dark, setDark] = useState(true);
+
   const [errMsg, setErrMsg] = useState("");
   
 	const navigate = useNavigate();
-	const location = useLocation();
+  const location = useLocation();
+  
 	const redirectPath = location.state?.from?.pathname || "/";
 
 	const { handleGit, handleGoogle, handleSignIn } = useContext(authContext);
@@ -39,17 +45,40 @@ function LoginForm() {
 				setErrMsg(error.message);
 			});
   };
+
+  	const toggledark = (dark) => {
+		setDark((dark) => !dark);
+	};
   
 
 	return (
-		<div className="flex h-[calc(100vh-300px)] p-10 flex-grow flex-col items-center justify-center">
-			<div className="w-full max-w-xl">
+    <div className={`flex h-[calc(100vh-164px)] md:p-10 py-16 flex-grow flex-col items-center justify-center ${dark ? 'bg-gray-800 ' : 'bg-gray-300'}`}>
+			{/* <div className="w-full max-w-xl"> */}
+			<div
+				className={` w-full max-w-xl p-4 rounded-xl md:p-10 ${
+					dark ? "bg-gray-400" : 'bg-white'
+				}`}>
+				<div className="flex justify-end mb-4">
+					{dark ? (
+						<FiMoon
+							className="text-2xl cursor-pointer"
+							onClick={toggledark}
+						/>
+					) : (
+						<FiSun
+							className="text-2xl cursor-pointer"
+							onClick={toggledark}
+						/>
+					)}
+				</div>
 				<form
 					onSubmit={handleLogIn}
-					className="bg-white shadow-lg rounded-xl px-8 pt-6 pb-8 mb-4">
+					className={`shadow-lg rounded-xl px-8 pt-6 pb-8 mb-4 ${
+						dark ? "bg-gray-800 text-gray-100" : "text-gray-700"
+					}`}>
 					<div className="mb-4">
 						<label
-							className="block text-gray-700 font-bold mb-2"
+							className="block  font-bold mb-2"
 							htmlFor="email">
 							Email
 						</label>
@@ -63,7 +92,7 @@ function LoginForm() {
 					</div>
 					<div className="mb-6">
 						<label
-							className="block text-gray-700 font-bold mb-2"
+							className="block font-bold mb-2"
 							htmlFor="password">
 							Password
 						</label>
