@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { AiOutlineHeart } from "react-icons/ai";
-import bg from "../assets/foodbg.jpg";
 import { Rating } from "@smastrom/react-rating";
 import LazyLoad from "react-lazy-load";
 import "@smastrom/react-rating/style.css";
@@ -10,8 +8,8 @@ import Stats from "../components/Stats";
 import AbsoluteBG from "../components/AbsoluteBG";
 import useTitle from "../hooks/useTitle";
 
-const Channel = () => {
-  useTitle("Channel");
+const ChefRecipes = () => {
+  useTitle("ChefRecipes");
 
 	const {
 		picture,
@@ -140,4 +138,4 @@ const Channel = () => {
 	);
 };
 
-export default Channel;
+export default ChefRecipes;

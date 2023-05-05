@@ -10,10 +10,10 @@ import LoginForm from "./pages/LoginForm";
 import Registration from "./pages/Registration";
 import AuthProvider from "./Provider/AuthProvider";
 import PrivateRoute from "./Private/PrivateRoute";
-import Channel from "./pages/Channel";
 import ErrorPage from "./pages/ErrorPage";
 import Profile from "./pages/Profile";
 import AboutUs from "./pages/AboutUs";
+import ChefRecipes from "./pages/ChefRecipes";
 
 const router = createBrowserRouter([
 	{
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
 				path: "/chefs/:id",
 				element: (
 					<PrivateRoute>
-						<Channel />
+						<ChefRecipes />
 					</PrivateRoute>
 				),
 				loader: ({ params }) =>
