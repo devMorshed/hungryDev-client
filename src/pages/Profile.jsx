@@ -8,12 +8,14 @@ import SpinnerSkeleton from "../components/SpinnerSkeleton";
 const Profile = () => {
 	useTitle("Profile");
 
-	const { user, handleSignOut, loading, handleUpdate } =
+	const { user, handleSignOut, loading, handleUpdate, handleEmailUpdate } =
 		useContext(authContext);
 
 	const [dark, setDark] = useState(true);
-	const [update, setUpdate] = useState(true);
+	const [update, setUpdate] = useState(false);
 	const [errMsg, setErrMsg] = useState();
+
+	console.log(update);
 
 	const toggledark = (dark) => {
 		setDark((dark) => !dark);
@@ -26,15 +28,17 @@ const Profile = () => {
 	const updateHandler = (event) => {
 		event.preventDefault();
 		const name = event.target.name.value;
+		const email = event.target.email.value;
 		const photo = event.target.photo.value;
-		handleUpdate(name, photo)
-			.then((result) => {
-				event.target.reset();
-				setUpdate(true);
-			})
-			.catch((error) => {
-				setErrMsg(error.code);
-			});
+		handleUpdate(name, photo);
+
+		if (user.email !== email) {
+			handleEmailUpdate(email);
+		}
+
+		setTimeout(() => {
+			setUpdate(false);
+		}, 2000);
 	};
 
 	return (
@@ -64,12 +68,12 @@ const Profile = () => {
 					</div>
 
 					<h2 className="text-2xl dark:text-4xl font-bold mb-6">
-						{update ? "Profile" : "Update Profile "}
+						{!update ? "Profile" : "Update Profile "}
 					</h2>
 
 					{user ? (
 						<div className="flex flex-col items-center">
-							<div className={`  ${!update && "hidden"}`}>
+							<div className={`  ${update && "hidden"}`}>
 								<img
 									src={user.photoURL}
 									alt="Profile"
@@ -89,7 +93,7 @@ const Profile = () => {
 									</button>
 									<button
 										onClick={() => {
-											setUpdate(!update);
+											setUpdate(true);
 										}}
 										className=" hover:glass  bg-orange-400 text-white font-bold py-2 px-4 rounded">
 										Update
@@ -99,7 +103,7 @@ const Profile = () => {
 
 							<form
 								onSubmit={updateHandler}
-								className={`space-y-5 ${update && "hidden"}`}>
+								className={`space-y-5 ${!update && "hidden"}`}>
 								<div>
 									<label
 										className="block text-gray-700 font-bold mb-2"
@@ -112,7 +116,6 @@ const Profile = () => {
 										type="text"
 										placeholder="John Doe"
 										defaultValue={user.displayName}
-										required
 									/>
 								</div>
 								<div>
@@ -140,9 +143,7 @@ const Profile = () => {
 										id="email"
 										type="email"
 										placeholder="Email"
-										required
-										value={user.email}
-										disabled
+										defaultValue={user.email}
 									/>
 								</div>
 
@@ -151,13 +152,13 @@ const Profile = () => {
 								)}
 								<div className="flex gap-3 justify-around">
 									<button
-										onClick={() => {setUpdate(!update)}}
+										onClick={() => {
+											setUpdate(false);
+										}}
 										className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
 										Cancel
 									</button>
-									<button
-										// onClick={updateHandler}
-										className="bg-red-500 hover:btn-success text-white font-bold py-2 px-4 rounded">
+									<button className="bg-red-500 hover:btn-success text-white font-bold py-2 px-4 rounded">
 										Submit
 									</button>
 								</div>

@@ -12,6 +12,7 @@ import {
 	GithubAuthProvider,
 	updateProfile,
 	signOut,
+	updateEmail,
 } from "firebase/auth";
 
 const AuthProvider = ({ children }) => {
@@ -39,12 +40,16 @@ const AuthProvider = ({ children }) => {
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
-	const handleUpdate = (name, photo, phone) => {
+	const handleUpdate = (name, photo) => {
 		return updateProfile(auth.currentUser, {
 			displayName: name,
 			photoURL: photo,
-			phoneNumber: phone,
 		});
+	};
+
+	const handleEmailUpdate = (newEmail) => {
+		const emailToUpdate = newEmail;
+		updateEmail(auth.currentUser, emailToUpdate);
 	};
 
 	const handleSignOut = () => {
@@ -73,6 +78,7 @@ const AuthProvider = ({ children }) => {
 		errMsg,
 		handleSignOut,
 		auth,
+		handleEmailUpdate,
 	};
 
 	return (
