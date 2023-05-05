@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Nav from "../components/Nav";
 import { Outlet, useNavigation } from "react-router-dom";
 import Footer from "../components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import AbsoluteBG from "../components/AbsoluteBG";
 import SpinnerSkeleton from "../components/SpinnerSkeleton";
+import { authContext } from "../Provider/AuthProvider";
 
 const Layout = () => {
-	const navigation = useNavigation();
+  const navigation = useNavigation();
+  const {loading} = useContext(authContext)
 
 	return (
 		<div className="flex flex-col min-h-screen relative">
@@ -19,7 +21,13 @@ const Layout = () => {
 			<ToastContainer />
 			<Nav />
 
-			<div>{navigation.state === "loading" ? <SpinnerSkeleton  /> : <Outlet/>}</div>
+			<div className={navigation.state === "loading" || loading ? "max-h-96" : ''}>
+        {navigation.state === "loading" || loading ? (
+					<SpinnerSkeleton />
+				) : (
+					<Outlet />
+				)}
+			</div>
 
 			<Footer />
 		</div>

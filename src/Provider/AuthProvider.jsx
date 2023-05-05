@@ -39,10 +39,11 @@ const AuthProvider = ({ children }) => {
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
-	const handleUpdate = (name, photo) => {
-		updateProfile(auth.currentUser, {
+	const handleUpdate = (name, photo, phone) => {
+		return updateProfile(auth.currentUser, {
 			displayName: name,
 			photoURL: photo,
+			phoneNumber: phone,
 		});
 	};
 

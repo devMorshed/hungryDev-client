@@ -18,6 +18,7 @@ const Registration = () => {
 		const name = event.target.name.value;
 		const photo = event.target.photo.value;
 
+    
 		if (password.length < 6) {
 			setErrMsg("Password must be at least 6 character long !!! ");
 		} else {
