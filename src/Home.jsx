@@ -7,7 +7,7 @@ import AbsoluteBG from "./components/AbsoluteBG";
 import useTitle from "./hooks/useTitle";
 
 const Home = () => {
-  useTitle("Home");
+	useTitle("Home");
 
 	const chefs = useLoaderData();
 	return (
@@ -22,7 +22,9 @@ const Home = () => {
 					<div className="md:w-1/2">
 						<div className=" text-4xl lg:text-5xl text-center space-y-4 mx-auto uppercase font-black">
 							<p>Welcome to</p>
-							<SectionHeading t1={"Hungry"} t2={"Dev"} />
+							<div className="animate-bounce">
+								<SectionHeading t1={"Hungry"} t2={"Dev"} />
+							</div>
 						</div>
 						<button className="mt-8 px-6 py-3 block mx-auto bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-bold">
 							Explore now
@@ -73,7 +75,9 @@ const Home = () => {
 					<div className="md:w-1/2">
 						<div className=" rounded">
 							<div className="mx-auto lg:p-20">
-								<SectionHeading t1={"Lets"} t2={"Talk!"} />
+								<div className="animate-bounce ">
+									<SectionHeading t1={"Lets"} t2={"Talk!"} />
+								</div>
 
 								<form className="mt-8">
 									<div className="grid grid-cols-1 gap-y-2 gap-x-8 sm:grid-cols-2">

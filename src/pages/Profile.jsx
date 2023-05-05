@@ -15,7 +15,7 @@ const Profile = () => {
 	const [update, setUpdate] = useState(false);
 	const [errMsg, setErrMsg] = useState();
 
-	console.log(update);
+
 
 	const toggledark = (dark) => {
 		setDark((dark) => !dark);

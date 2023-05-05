@@ -3,13 +3,13 @@ import AbsoluteBG from "../components/AbsoluteBG";
 import { SiCodechef } from "react-icons/si";
 import { useLoaderData } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
+import MapComponent from "../components/MyComponent";
 
 const AboutUs = () => {
-  useTitle("About");
+	useTitle("About");
 	const data = useLoaderData();
 
 	const { instructor, features, packages } = data;
-	console.log(features);
 
 	return (
 		<div className="container my-10 mx-auto">
@@ -104,6 +104,21 @@ const AboutUs = () => {
 								<p className="">{pack.description}</p>
 							</div>
 						))}
+					</div>
+				</div>
+			</section>
+
+			<section className="p-10 relative">
+				<AbsoluteBG
+					src={"https://i.ibb.co/x1kTB5W/orangebg.png"}
+					style={"opacity-20 brightness-50"}
+				/>
+				<div className="flex flex-col md:flex-row gap-10 items-center justify-between">
+					<div className="w-1/3  duration-75 animate-spin">
+						<SectionHeading t1={"Find ME"}  />
+					</div>
+					<div className="w-2/3 p-5 hover:scale-110 transition-transform duration-300">
+						<MapComponent />
 					</div>
 				</div>
 			</section>
