@@ -15,8 +15,6 @@ const Profile = () => {
 	const [update, setUpdate] = useState(false);
 	const [errMsg, setErrMsg] = useState();
 
-
-
 	const toggledark = (dark) => {
 		setDark((dark) => !dark);
 	};
@@ -29,8 +27,23 @@ const Profile = () => {
 		event.preventDefault();
 		const name = event.target.name.value;
 		const email = event.target.email.value;
-		const photo = event.target.photo.value;
-		handleUpdate(name, photo);
+		const img = event.target.image.files[0];
+		const formData = new FormData();
+		formData.append("image", img);
+
+		const url = `https://api.imgbb.com/1/upload?key=${
+			import.meta.env.VITE_IMGBB_KEY
+		}`;
+
+		fetch(url, {
+			method: "POST",
+			body: formData,
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				const photo = data.data.display_url;
+				handleUpdate(name, photo);
+			});
 
 		if (user.email !== email) {
 			handleEmailUpdate(email);
@@ -122,14 +135,13 @@ const Profile = () => {
 									<label
 										className="block text-gray-700 font-bold mb-2"
 										htmlFor="photo">
-										Photo URL
+										Photo
 									</label>
 									<input
-										className=" border rounded w-full px-3 py-2 text-gray-700"
+										type="file"
 										id="photo"
-										type="text"
-										placeholder="https://example.com"
-										defaultValue={user.photoURL}
+										name="image"
+										accept="image/*"
 									/>
 								</div>
 								<div>

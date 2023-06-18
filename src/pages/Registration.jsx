@@ -5,7 +5,7 @@ import { signOut } from "firebase/auth";
 import useTitle from "../hooks/useTitle";
 
 const Registration = () => {
-  useTitle("Registration");
+	useTitle("Registration");
 
 	const { auth, handleNewUser, handleUpdate } = useContext(authContext);
 	const [errMsg, setErrMsg] = useState("");
@@ -16,24 +16,39 @@ const Registration = () => {
 		const email = event.target.email.value;
 		const password = event.target.password.value;
 		const name = event.target.name.value;
-		const photo = event.target.photo.value;
 
-    
+		const img = event.target.image.files[0];
+		const formData = new FormData();
+		formData.append("image", img);
+
+		const url = `https://api.imgbb.com/1/upload?key=${
+			import.meta.env.VITE_IMGBB_KEY
+		}`;
+
 		if (password.length < 6) {
 			setErrMsg("Password must be at least 6 character long !!! ");
 		} else {
 			setErrMsg("");
 			handleNewUser(email, password)
 				.then((result) => {
-					handleUpdate(name, photo);
-					signOut(auth);
-					navigate("/login");
+					fetch(url, {
+						method: "POST",
+						body: formData,
+					})
+						.then((res) => res.json())
+						.then((data) => {
+							const photo = data.data.display_url;
+							handleUpdate(name, photo);
+							signOut(auth);
+							navigate("/login");
+						});
 				})
 				.catch((error) => {
 					setErrMsg(error.message);
 				});
 		}
-	};
+  };
+  
 
 	return (
 		<div className="flex h-[calc(100vh-300px)] p-10 flex-col items-center flex-grow justify-center">
@@ -52,22 +67,23 @@ const Registration = () => {
 							id="name"
 							type="text"
 							placeholder="John Doe"
-							required
+							// required
 						/>
 					</div>
-					<div>
+					<div className="flex justify-between items-center">
 						<label
 							className="block text-gray-700 font-bold mb-2"
 							htmlFor="photo">
-							Photo URL
+							Photo
 						</label>
 						<input
-							className=" border rounded w-full px-3 py-2 text-gray-700"
+							type="file"
 							id="photo"
-							type="text"
-							placeholder="https://example.com"
+							name="image"
+							accept="image/*"
 						/>
 					</div>
+
 					<div>
 						<label
 							className="block text-gray-700 font-bold mb-2"
@@ -79,7 +95,7 @@ const Registration = () => {
 							id="email"
 							type="email"
 							placeholder="Email"
-							required
+							// required
 						/>
 					</div>
 					<div className="mb-6">
@@ -93,7 +109,7 @@ const Registration = () => {
 							id="password"
 							type="password"
 							placeholder="Password"
-							required
+							// required
 						/>
 					</div>
 
