@@ -14,21 +14,22 @@ import Tips from "./Tips";
 import PhotoGallery from "./PhotoGallery";
 
 const Home = () => {
-	useTitle("Home");
+  useTitle("Home");
 
-	const chefs = useLoaderData();
-	return (
-		<div className="">
-			<Banner />
-			<OurChefs chefs={chefs} />
-			<TrendingMenu />
-			<PopularMenu />
+  const chefs = useLoaderData();
+  return (
+    <div className="">
+      <Banner />
+      <OurChefs chefs={chefs} />
+      <TrendingMenu />
+      {/*
+      <PopularMenu />
       <Tips />
-      <PhotoGallery/>
-			<CustomerReview />
-			<ContactUs />
-		</div>
-	);
+      <PhotoGallery /> */}
+      <CustomerReview />
+      <ContactUs />
+    </div>
+  );
 };
 
 export default Home;
