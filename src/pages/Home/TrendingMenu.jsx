@@ -1,3 +1,4 @@
+import AbsoluteBG from "../../components/AbsoluteBG";
 import SectionHeading from "../../components/SectionHeading";
 
 const TrendingMenu = () => {
@@ -38,13 +39,21 @@ const TrendingMenu = () => {
     },
   ];
   return (
-    <section className=" container mx-auto py-10 p-4 my-10">
+    <section className=" container relative mx-auto py-10 p-4 my-10">
       <SectionHeading t1={"Trending"} t2={"Menus"} />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-5 my-10 gap-10">
+      <AbsoluteBG
+        src={"https://i.ibb.co/6PfZnJf/darkbg.jpg"}
+        style={"opacity-10"}
+      />
+      <div className="grid sm:grid-cols-2 lg:grid-cols-5 m-10 gap-10">
         {topMenus.map(({ id, img, name, description }) => (
           <div className="space-y-3" key={id}>
             <div className="relative">
-              <img src={img} alt={name} />
+              <img
+                className="rounded-ss-[100px] rounded-ee-[100px]"
+                src={img}
+                alt={name}
+              />
               <p className="absolute top-0 text-2xl font-bold  h-10 w-10 text-center rounded-se-xl rounded-es-xl bg-slate-50">
                 {id}
               </p>
