@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "hungrydev",
     "public": "dist",
     "ignore": [
       "firebase.json",
